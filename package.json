@@ -1,0 +1,53 @@
+{
+  "name": "il-quaderno-di-sofia",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "test": "vitest run",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "desktop": "npm run build && electron-builder --win portable"
+  },
+  "dependencies": {
+    "@fontsource/source-sans-3": "^5.3.1",
+    "@fontsource/source-serif-4": "^5.3.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "electron": "^33.4.11",
+    "electron-builder": "^26.18.0",
+    "oxlint": "^1.90.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.1"
+  },
+  "build": {
+    "appId": "it.sofia.quaderno",
+    "productName": "Il quaderno di Sofia",
+    "electronDist": "node_modules/electron/dist",
+    "directories": {
+      "output": "ship"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "asar": true,
+    "win": {
+      "target": "portable",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "Il quaderno di Sofia.${ext}"
+    }
+  }
+}
